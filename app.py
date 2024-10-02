@@ -3,6 +3,7 @@ from torchvision import transforms
 from PIL import Image
 import torch
 import torch.nn as nn
+import os
 
 app = Flask(__name__)
 MODEL_URL = 'https://drive.google.com/uc?id=1BJf2SBr9383z-WXXLkc1R2_tmXSSjJhA'
