@@ -5,6 +5,12 @@ import torch
 import torch.nn as nn
 
 app = Flask(__name__)
+MODEL_URL = 'https://drive.google.com/uc?id=1BJf2SBr9383z-WXXLkc1R2_tmXSSjJhA'
+MODEL_PATH = 'cat_dog_classifier.pth'
+
+# Download the model if it does not exist
+if not os.path.exists(MODEL_PATH):
+    gdown.download(MODEL_URL, MODEL_PATH, quiet=False)
 
 # Define your CNN architecture
 class CNN(nn.Module):
@@ -28,7 +34,7 @@ class CNN(nn.Module):
 
 # Load the model weights
 model = CNN()
-model.load_state_dict(torch.load('cat_dog_classifier.pth', map_location=torch.device('cpu')))
+model.load_state_dict(torch.load(MODEL_PATH, map_location=torch.device('cpu')))
 model.eval()
 
 # Define the image transformation
